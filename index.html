@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 - Formulaire d'inscription</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+    <header class="site-header">
+      <h1>TP 2 : Formulaire d'inscription complet</h1>
+    </header>
+
+    <nav class="top-nav" aria-label="Navigation interne">
+      <a href="#inscription-title">Formulaire</a>
+      <a href="#regles">Regles de validation</a>
+    </nav>
+
+    <main id="contenu" class="container">
+      <article class="card" aria-labelledby="inscription-title">
+        <h2 id="inscription-title">Creer votre compte</h2>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+          <fieldset>
+            <legend>Informations personnelles</legend>
+
+            <div class="form-row">
+              <label for="nom">Nom *</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" required minlength="2" maxlength="50" title="Le nom est obligatoire (2 caracteres minimum).">
+            </div>
+
+            <div class="form-row">
+              <label for="prenom">Prenom *</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" required minlength="2" maxlength="50" title="Le prenom est obligatoire (2 caracteres minimum).">
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required title="Entrez une adresse email valide, par exemple nom@domaine.com.">
+            </div>
+
+            <div class="form-row">
+              <label for="telephone">Telephone *</label>
+              <input id="telephone" name="telephone" type="tel" autocomplete="tel-national" required pattern="(\+33|0)[1-9](\d{2}){4}" placeholder="0612345678" title="Format attendu : 0612345678 ou +33612345678.">
+            </div>
+
+            <div class="form-row">
+              <label for="naissance">Date de naissance *</label>
+              <input id="naissance" name="naissance" type="date" autocomplete="bday" required max="2008-04-13" title="Vous devez avoir au moins 18 ans.">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Securite du compte</legend>
+
+            <div class="form-row">
+              <label for="motdepasse">Mot de passe *</label>
+              <input id="motdepasse" name="motdepasse" type="password" autocomplete="new-password" required pattern="(?=.*[A-Z])(?=.*\d).{8,}" title="Minimum 8 caracteres, avec au moins 1 majuscule et 1 chiffre.">
+            </div>
+
+            <div class="form-row">
+              <label for="confirmation">Confirmation du mot de passe *</label>
+              <input id="confirmation" name="confirmation" type="password" autocomplete="new-password" required pattern="(?=.*[A-Z])(?=.*\d).{8,}" title="Repetez le mot de passe avec le meme format.">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Preferences</legend>
+
+            <div class="form-row">
+              <label for="zone">Zone geographique *</label>
+              <select id="zone" name="zone" autocomplete="country" required>
+                <option value="">-- Choisir une zone --</option>
+                <option value="afrique">Afrique</option>
+                <option value="amerique">Amerique</option>
+                <option value="asie">Asie</option>
+                <option value="europe">Europe</option>
+                <option value="oceanie">Oceanie</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="pays">Pays (datalist) *</label>
+              <input id="pays" name="pays" type="text" list="liste-pays" autocomplete="country-name" required placeholder="Ex: France" title="Choisissez un pays dans la liste ou saisissez un pays valide.">
+              <datalist id="liste-pays">
+                <option value="France"></option>
+                <option value="Belgique"></option>
+                <option value="Suisse"></option>
+                <option value="Canada"></option>
+                <option value="Maroc"></option>
+                <option value="Senegal"></option>
+                <option value="Cote d'Ivoire"></option>
+              </datalist>
+            </div>
+
+            <fieldset class="sub-group">
+              <legend>Genre *</legend>
+              <div class="inline-options">
+                <label><input type="radio" name="genre" value="femme" required> Femme</label>
+                <label><input type="radio" name="genre" value="homme" required> Homme</label>
+                <label><input type="radio" name="genre" value="autre" required> Autre</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="sub-group">
+              <legend>Centres d'interet</legend>
+              <div class="inline-options">
+                <label><input type="checkbox" name="interets" value="tech"> Technologie</label>
+                <label><input type="checkbox" name="interets" value="sport"> Sport</label>
+                <label><input type="checkbox" name="interets" value="musique"> Musique</label>
+                <label><input type="checkbox" name="interets" value="voyage"> Voyage</label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <fieldset>
+            <legend>Profil public</legend>
+
+            <div class="form-row">
+              <label for="bio">Biographie (max 300 caracteres)</label>
+              <textarea id="bio" name="bio" rows="5" maxlength="300" placeholder="Parlez un peu de vous..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <label for="photo">Photo de profil *</label>
+              <input id="photo" name="photo" type="file" accept="image/*" required title="Ajoutez une image au format JPG, PNG ou WebP.">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Validation finale</legend>
+            <label class="checkbox-line" for="cgu">
+              <input id="cgu" name="cgu" type="checkbox" required>
+              J'accepte les Conditions Generales d'Utilisation (CGU) *
+            </label>
+          </fieldset>
+
+          <p class="required-note">* Champs obligatoires</p>
+
+          <div class="actions">
+            <button type="submit">S'inscrire</button>
+            <button type="reset" class="secondary">Reinitialiser</button>
+          </div>
+        </form>
+
+        <aside id="regles" class="rules" aria-label="Rappels de validation">
+          <h3>Rappels</h3>
+          <ul>
+            <li>Email valide obligatoire</li>
+            <li>Telephone au format francais</li>
+            <li>Mot de passe : 8+ caracteres, 1 majuscule, 1 chiffre</li>
+            <li>Age minimum : 18 ans</li>
+          </ul>
+        </aside>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>TP2 HTML5/CSS</p>
+    </footer>
+  </body>
+</html>
